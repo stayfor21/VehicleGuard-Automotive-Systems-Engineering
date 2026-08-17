@@ -18,8 +18,8 @@ The risk register will be reviewed and updated as the project develops.
 
 Each identified project risk is evaluated using two factors:
 
-* **Probability** — how likely the risk is to occur.
-* **Impact** — how strongly the risk could affect the project if it occurs.
+* **Probability** - how likely the risk is to occur.
+* **Impact** - how strongly the risk could affect the project if it occurs.
 
 Both factors use a three-level scale.
 
@@ -62,7 +62,7 @@ The matrix below shows how probability and impact ratings are combined to determ
 ![VehicleGuard Project Risk Matrix](../diagrams/project-risk-matrix.png)
 
 <p align="center">
-  <em>Figure 1 — VehicleGuard project risk assessment matrix</em>
+  <em>Figure 1 - VehicleGuard project risk assessment matrix</em>
 </p>
 
 The score is used to support prioritization. Engineering judgement is still required when evaluating individual risks.
