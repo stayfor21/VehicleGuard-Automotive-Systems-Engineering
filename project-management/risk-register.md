@@ -57,6 +57,14 @@ The calculated score is used to determine the overall risk level.
 |   3–4 | Medium     | Monitor and define mitigation where appropriate |
 |   6–9 | High       | Mitigation action required                      |
 
+The matrix below shows how probability and impact ratings are combined to determine the overall project risk level.
+
+![VehicleGuard Project Risk Matrix](../diagrams/project-risk-matrix.png)
+
+<p align="center">
+  <em>Figure 1 — VehicleGuard project risk assessment matrix</em>
+</p>
+
 The score is used to support prioritization. Engineering judgement is still required when evaluating individual risks.
 
 A low numerical score does not automatically mean that a risk can be ignored.
