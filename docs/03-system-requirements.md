@@ -169,3 +169,29 @@ The complete requirements register will later be maintained in:
 
 This document provides the readable system specification, while the requirements register supports structured management and traceability.
 
+---
+
+## 7. Requirements Traceability
+
+VehicleGuard maintains traceability between stakeholder needs, system requirements, architecture elements, verification activities, and verification evidence.
+
+The purpose of traceability is to ensure that each system requirement has a defined engineering source and can later be connected to the system elements that implement it and the test cases that verify it.
+
+Traceability is maintained in both directions. This makes it possible to determine:
+
+- which stakeholder need resulted in a system requirement;
+- which architecture elements are responsible for realizing a requirement;
+- which test cases verify a requirement;
+- which verification results provide evidence that the requirement has been satisfied.
+
+A stakeholder need may result in multiple system requirements. Similarly, one system requirement may be allocated to multiple architecture elements when its implementation requires more than one system function or component.
+
+The traceability concept used throughout VehicleGuard is shown below.
+
+![VehicleGuard Requirements Traceability](../diagrams/requirements-traceability.png)
+
+<p align="center">
+  <em>Figure 1 - VehicleGuard Requirements Traceability</em>
+</p>
+
+Detailed traceability relationships will be maintained as the corresponding requirements, architecture elements, and test cases are defined.
