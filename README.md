@@ -8,7 +8,16 @@ The project explores how vehicle condition data can be collected, evaluated and 
 
 The main goal is not to develop a production-ready automotive ECU or a complete vehicle diagnostic platform. Instead, VehicleGuard is designed as a practical systems engineering case study covering the complete development process from the initial problem statement and stakeholder needs to system requirements, architecture, risk analysis, verification and change management.
 
-A lightweight software prototype will later be used to simulate vehicle signals and verify selected system requirements.
+A lightweight software prototype is used to simulate vehicle signals and verify selected system requirements.
+
+Current prototype commands:
+
+```text
+python -m prototype.vehicle_simulator
+python -m pytest
+```
+
+Current verification status: VehicleGuard V1 prototype verification passed on 2026-08-21 with 95 automated pytest tests passing and 0 failures.
 
 ---
 
@@ -763,6 +772,8 @@ VehicleGuard follows an iterative systems engineering process.
 * fault detection;
 * severity classification.
 
+The V1 prototype is implemented in `prototype/`. It loads diagnostic ranges and thresholds from `prototype/config/vehicleguard-v1.json`, provides deterministic simulator scenarios, and generates structured driver warning and diagnostic event outputs for verification.
+
 ### Phase 6 — Verification
 
 * test specification;
@@ -850,31 +861,45 @@ Current status:
 [x] Initial scope
 [x] Initial system idea
 
-[ ] Stakeholder analysis
-[ ] Stakeholder requirements
-[ ] System requirements
-[ ] System context diagram
-[ ] Functional architecture
-[ ] Risk analysis
-[ ] Prototype development
-[ ] Test specification
-[ ] Verification
+[x] Stakeholder analysis
+[x] Stakeholder requirements
+[x] System requirements
+[x] System context diagram
+[x] Functional architecture
+[x] Risk analysis
+[x] Prototype development
+[x] Test specification
+[x] Verification
 [ ] Change request
 [ ] Regression testing
 [ ] Final engineering review
 ```
 
+Prototype execution:
+
+```text
+python -m prototype.vehicle_simulator
+```
+
+Automated verification:
+
+```text
+python -m pytest
+```
+
+Latest recorded result: 95 passed, 0 failed, 0 skipped or blocked. The verification report and machine-readable evidence are stored in `tests/test-report.md` and `tests/results/`.
+
 ---
 
 ## 25. Current Development Stage
 
-The project is currently in the **concept and requirements definition phase**.
+The project has reached the **VehicleGuard V1 prototype verification stage**.
 
-No final system architecture has been selected yet.
+The V1 requirements, architecture, interfaces, configuration, risk analysis, prototype implementation, and automated verification evidence are now present in the repository.
 
-No production assumptions should be derived from the current repository state.
+No production assumptions should be derived from the repository state.
 
-The architecture, requirements and diagnostic strategy will evolve as engineering decisions are made and reviewed.
+Future architecture, requirement, or diagnostic strategy changes should be handled through the documented change management process when they affect established V1 behaviour.
 
 This development history is intentionally preserved as part of the project.
 

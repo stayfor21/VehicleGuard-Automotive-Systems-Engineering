@@ -1,0 +1,303 @@
+{
+  "version": "VehicleGuard V1 Demonstration Configuration",
+  "input_fields": {
+    "timestamp": {
+      "data_type": "float",
+      "required": true,
+      "supported_min": 0.0,
+      "supported_max": null
+    },
+    "coolant_temperature": {
+      "data_type": "float",
+      "required": true,
+      "supported_min": -40.0,
+      "supported_max": 150.0
+    },
+    "battery_voltage": {
+      "data_type": "float",
+      "required": true,
+      "supported_min": 0.0,
+      "supported_max": 20.0
+    },
+    "oil_pressure": {
+      "data_type": "float",
+      "required": true,
+      "supported_min": 0.0,
+      "supported_max": 1000.0
+    },
+    "engine_rpm": {
+      "data_type": "integer",
+      "required": true,
+      "supported_min": 0,
+      "supported_max": 10000
+    },
+    "brake_pad_remaining": {
+      "data_type": "float",
+      "required": true,
+      "supported_min": 0.0,
+      "supported_max": 100.0
+    }
+  },
+  "parameters": {
+    "coolant_temperature": {
+      "parameter_id": "CFG-COOLANT",
+      "unit": "degC",
+      "data_type": "float",
+      "supported_min": -40.0,
+      "supported_max": 150.0,
+      "recovery_condition_id": "COOLANT_TEMPERATURE_RECOVERY",
+      "conditions": [
+        {
+          "condition_id": "COOLANT_TEMPERATURE_CRITICAL_HIGH",
+          "condition_type": "HIGH_COOLANT_TEMPERATURE",
+          "severity": "CRITICAL",
+          "event_type": "ABNORMAL_CONDITION",
+          "message": "Coolant temperature critical.",
+          "rules": [
+            { "field": "coolant_temperature", "operator": ">=", "value": 120.0 }
+          ]
+        },
+        {
+          "condition_id": "COOLANT_TEMPERATURE_WARNING_HIGH",
+          "condition_type": "HIGH_COOLANT_TEMPERATURE",
+          "severity": "WARNING",
+          "event_type": "ABNORMAL_CONDITION",
+          "message": "Coolant temperature high.",
+          "rules": [
+            { "field": "coolant_temperature", "operator": ">=", "value": 110.0 },
+            { "field": "coolant_temperature", "operator": "<", "value": 120.0 }
+          ]
+        },
+        {
+          "condition_id": "COOLANT_TEMPERATURE_NORMAL",
+          "condition_type": "NORMAL",
+          "severity": "NORMAL",
+          "event_type": "NORMAL",
+          "message": "Coolant temperature normal.",
+          "rules": [
+            { "field": "coolant_temperature", "operator": "<", "value": 110.0 }
+          ]
+        }
+      ]
+    },
+    "battery_voltage": {
+      "parameter_id": "CFG-BATTERY",
+      "unit": "V",
+      "data_type": "float",
+      "supported_min": 0.0,
+      "supported_max": 20.0,
+      "recovery_condition_id": "BATTERY_VOLTAGE_RECOVERY",
+      "activation_rules": [
+        { "field": "engine_rpm", "operator": ">", "value": 0 }
+      ],
+      "inactive_condition": {
+        "condition_id": "BATTERY_VOLTAGE_MONITORING_INACTIVE",
+        "condition_type": "INACTIVE",
+        "severity": "NORMAL",
+        "event_type": "INACTIVE",
+        "message": "Battery voltage monitoring inactive.",
+        "rules": []
+      },
+      "conditions": [
+        {
+          "condition_id": "BATTERY_VOLTAGE_CRITICAL_LOW",
+          "condition_type": "LOW_BATTERY_VOLTAGE",
+          "severity": "CRITICAL",
+          "event_type": "ABNORMAL_CONDITION",
+          "message": "Battery voltage critical low.",
+          "rules": [
+            { "field": "battery_voltage", "operator": "<", "value": 11.0 }
+          ]
+        },
+        {
+          "condition_id": "BATTERY_VOLTAGE_WARNING_LOW",
+          "condition_type": "LOW_BATTERY_VOLTAGE",
+          "severity": "WARNING",
+          "event_type": "ABNORMAL_CONDITION",
+          "message": "Battery voltage low.",
+          "rules": [
+            { "field": "battery_voltage", "operator": ">=", "value": 11.0 },
+            { "field": "battery_voltage", "operator": "<", "value": 12.0 }
+          ]
+        },
+        {
+          "condition_id": "BATTERY_VOLTAGE_NORMAL",
+          "condition_type": "NORMAL",
+          "severity": "NORMAL",
+          "event_type": "NORMAL",
+          "message": "Battery voltage normal.",
+          "rules": [
+            { "field": "battery_voltage", "operator": ">=", "value": 12.0 },
+            { "field": "battery_voltage", "operator": "<=", "value": 15.0 }
+          ]
+        },
+        {
+          "condition_id": "BATTERY_VOLTAGE_WARNING_HIGH",
+          "condition_type": "HIGH_BATTERY_VOLTAGE",
+          "severity": "WARNING",
+          "event_type": "ABNORMAL_CONDITION",
+          "message": "Battery voltage high.",
+          "rules": [
+            { "field": "battery_voltage", "operator": ">", "value": 15.0 },
+            { "field": "battery_voltage", "operator": "<=", "value": 16.0 }
+          ]
+        },
+        {
+          "condition_id": "BATTERY_VOLTAGE_CRITICAL_HIGH",
+          "condition_type": "HIGH_BATTERY_VOLTAGE",
+          "severity": "CRITICAL",
+          "event_type": "ABNORMAL_CONDITION",
+          "message": "Battery voltage critical high.",
+          "rules": [
+            { "field": "battery_voltage", "operator": ">", "value": 16.0 }
+          ]
+        }
+      ]
+    },
+    "oil_pressure": {
+      "parameter_id": "CFG-OIL",
+      "unit": "kPa",
+      "data_type": "float",
+      "supported_min": 0.0,
+      "supported_max": 1000.0,
+      "recovery_condition_id": "OIL_PRESSURE_RECOVERY",
+      "activation_rules": [
+        { "field": "engine_rpm", "operator": ">", "value": 0 }
+      ],
+      "inactive_condition": {
+        "condition_id": "OIL_PRESSURE_MONITORING_INACTIVE",
+        "condition_type": "INACTIVE",
+        "severity": "NORMAL",
+        "event_type": "INACTIVE",
+        "message": "Oil pressure monitoring inactive.",
+        "rules": []
+      },
+      "conditions": [
+        {
+          "condition_id": "OIL_PRESSURE_CRITICAL_LOW",
+          "condition_type": "LOW_OIL_PRESSURE",
+          "severity": "CRITICAL",
+          "event_type": "ABNORMAL_CONDITION",
+          "message": "Oil pressure critical low.",
+          "rules": [
+            { "field": "oil_pressure", "operator": "<", "value": 70.0 }
+          ]
+        },
+        {
+          "condition_id": "OIL_PRESSURE_WARNING_LOW",
+          "condition_type": "LOW_OIL_PRESSURE",
+          "severity": "WARNING",
+          "event_type": "ABNORMAL_CONDITION",
+          "message": "Oil pressure low.",
+          "rules": [
+            { "field": "oil_pressure", "operator": ">=", "value": 70.0 },
+            { "field": "oil_pressure", "operator": "<", "value": 150.0 }
+          ]
+        },
+        {
+          "condition_id": "OIL_PRESSURE_NORMAL",
+          "condition_type": "NORMAL",
+          "severity": "NORMAL",
+          "event_type": "NORMAL",
+          "message": "Oil pressure normal.",
+          "rules": [
+            { "field": "oil_pressure", "operator": ">=", "value": 150.0 }
+          ]
+        }
+      ]
+    },
+    "engine_rpm": {
+      "parameter_id": "CFG-RPM",
+      "unit": "rpm",
+      "data_type": "integer",
+      "supported_min": 0,
+      "supported_max": 10000,
+      "recovery_condition_id": "ENGINE_RPM_RECOVERY",
+      "conditions": [
+        {
+          "condition_id": "ENGINE_RPM_CRITICAL_HIGH",
+          "condition_type": "HIGH_ENGINE_RPM",
+          "severity": "CRITICAL",
+          "event_type": "ABNORMAL_CONDITION",
+          "message": "Engine RPM critical high.",
+          "rules": [
+            { "field": "engine_rpm", "operator": ">=", "value": 7500 }
+          ]
+        },
+        {
+          "condition_id": "ENGINE_RPM_WARNING_HIGH",
+          "condition_type": "HIGH_ENGINE_RPM",
+          "severity": "WARNING",
+          "event_type": "ABNORMAL_CONDITION",
+          "message": "Engine RPM high.",
+          "rules": [
+            { "field": "engine_rpm", "operator": ">=", "value": 6500 },
+            { "field": "engine_rpm", "operator": "<", "value": 7500 }
+          ]
+        },
+        {
+          "condition_id": "ENGINE_RPM_NORMAL",
+          "condition_type": "NORMAL",
+          "severity": "NORMAL",
+          "event_type": "NORMAL",
+          "message": "Engine RPM normal.",
+          "rules": [
+            { "field": "engine_rpm", "operator": "<", "value": 6500 }
+          ]
+        }
+      ]
+    },
+    "brake_pad_remaining": {
+      "parameter_id": "CFG-BRAKE",
+      "unit": "%",
+      "data_type": "float",
+      "supported_min": 0.0,
+      "supported_max": 100.0,
+      "recovery_condition_id": "BRAKE_PAD_REMAINING_RECOVERY",
+      "conditions": [
+        {
+          "condition_id": "BRAKE_PAD_REMAINING_NORMAL",
+          "condition_type": "NORMAL",
+          "severity": "NORMAL",
+          "event_type": "NORMAL",
+          "message": "Brake pad remaining normal.",
+          "rules": [
+            { "field": "brake_pad_remaining", "operator": ">", "value": 25.0 }
+          ]
+        },
+        {
+          "condition_id": "BRAKE_PAD_REMAINING_INFO_LOW",
+          "condition_type": "LOW_BRAKE_PAD_REMAINING",
+          "severity": "INFO",
+          "event_type": "ABNORMAL_CONDITION",
+          "message": "Brake pad remaining reduced.",
+          "rules": [
+            { "field": "brake_pad_remaining", "operator": ">", "value": 15.0 },
+            { "field": "brake_pad_remaining", "operator": "<=", "value": 25.0 }
+          ]
+        },
+        {
+          "condition_id": "BRAKE_PAD_REMAINING_WARNING_LOW",
+          "condition_type": "LOW_BRAKE_PAD_REMAINING",
+          "severity": "WARNING",
+          "event_type": "ABNORMAL_CONDITION",
+          "message": "Brake pad remaining low.",
+          "rules": [
+            { "field": "brake_pad_remaining", "operator": ">", "value": 5.0 },
+            { "field": "brake_pad_remaining", "operator": "<=", "value": 15.0 }
+          ]
+        },
+        {
+          "condition_id": "BRAKE_PAD_REMAINING_CRITICAL_LOW",
+          "condition_type": "LOW_BRAKE_PAD_REMAINING",
+          "severity": "CRITICAL",
+          "event_type": "ABNORMAL_CONDITION",
+          "message": "Brake pad remaining critical low.",
+          "rules": [
+            { "field": "brake_pad_remaining", "operator": "<=", "value": 5.0 }
+          ]
+        }
+      ]
+    }
+  }
+}

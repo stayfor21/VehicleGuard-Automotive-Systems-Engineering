@@ -67,12 +67,12 @@ The following status values are used throughout the roadmap:
 
 | Phase   | Description                           | Status      |
 | ------- | ------------------------------------- | ----------- |
-| Phase 1 | Project Definition                    | In Progress |
-| Phase 2 | Stakeholder and Requirements Analysis | Not Started |
-| Phase 3 | System Architecture                   | Not Started |
-| Phase 4 | System Risk Analysis                  | Not Started |
-| Phase 5 | Prototype Development                 | Not Started |
-| Phase 6 | Verification                          | Not Started |
+| Phase 1 | Project Definition                    | Completed   |
+| Phase 2 | Stakeholder and Requirements Analysis | Completed   |
+| Phase 3 | System Architecture                   | Completed   |
+| Phase 4 | System Risk Analysis                  | Completed   |
+| Phase 5 | Prototype Development                 | Completed   |
+| Phase 6 | Verification                          | Completed   |
 | Phase 7 | Controlled System Change              | Not Started |
 | Phase 8 | Final Engineering Review              | Not Started |
 
@@ -80,7 +80,7 @@ The following status values are used throughout the roadmap:
 
 # Phase 1 - Project Definition
 
-**Status:** `In Progress`
+**Status:** `Completed`
 
 ## Objective
 
@@ -116,7 +116,7 @@ Phase 1 can be considered complete when the purpose, scope, system boundary, ass
 
 # Phase 2 - Stakeholder and Requirements Analysis
 
-**Status:** `Not Started`
+**Status:** `Completed`
 
 ## Objective
 
@@ -153,7 +153,7 @@ Phase 2 can be considered complete when the main V1 system behaviour is describe
 
 # Phase 3 - System Architecture
 
-**Status:** `Not Started`
+**Status:** `Completed`
 
 ## Objective
 
@@ -190,7 +190,7 @@ Phase 3 can be considered complete when the main components, responsibilities, i
 
 # Phase 4 - System Risk Analysis
 
-**Status:** `Not Started`
+**Status:** `Completed`
 
 ## Objective
 
@@ -225,7 +225,7 @@ Phase 4 can be considered complete when the main system failure scenarios have b
 
 # Phase 5 - Prototype Development
 
-**Status:** `Not Started`
+**Status:** `Completed`
 
 ## Objective
 
@@ -261,7 +261,7 @@ Phase 5 can be considered complete when the prototype can simulate the required 
 
 # Phase 6 - Verification
 
-**Status:** `Not Started`
+**Status:** `Completed`
 
 ## Objective
 

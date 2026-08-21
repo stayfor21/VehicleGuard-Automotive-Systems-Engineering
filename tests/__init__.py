@@ -1,0 +1,1 @@
+"""VehicleGuard automated verification tests."""
